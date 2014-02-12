@@ -1,5 +1,3 @@
-/* $Xorg: ToggleP.h,v 1.4 2001/02/09 02:03:47 xorgcvs Exp $ */
-
 /*
 
 Copyright 1989, 1998  The Open Group
@@ -25,13 +23,12 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xaw/ToggleP.h,v 1.7 2001/01/17 19:42:35 dawes Exp $ */
 
-/* 
+/*
  * Author: Chris D. Peterson
  *         MIT X Consortium
  *         kit@expo.lcs.mit.edu
- *  
+ *
  * Date:   January 12, 1989
  *
  */

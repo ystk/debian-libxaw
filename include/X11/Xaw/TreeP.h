@@ -1,6 +1,4 @@
 /*
- * $Xorg: TreeP.h,v 1.4 2001/02/09 02:03:47 xorgcvs Exp $
- *
 
 Copyright 1990, 1998  The Open Group
 
@@ -30,7 +28,7 @@ in this Software without prior written authorization from The Open Group.
  * purpose and without fee is hereby granted, provided that the above
  * copyright notice appear in all copies and that both the copyright notice
  * and this permission notice appear in supporting documentation.
- * 
+ *
  * Prentice Hall and the authors disclaim all warranties with regard
  * to this software, including all implied warranties of merchantability and
  * fitness.  In no event shall Prentice Hall or the authors be liable
@@ -38,18 +36,16 @@ in this Software without prior written authorization from The Open Group.
  * resulting from loss of use, data or profits, whether in an action of
  * contract, negligence or other tortious action, arising out of or in
  * connection with the use or performance of this software.
- * 
+ *
  * Authors:  Jim Fulton, MIT X Consortium,
  *           based on a version by Douglas Young, Prentice Hall
- * 
+ *
  * This widget is based on the Tree widget described on pages 397-419 of
- * Douglas Young's book "The X Window System, Programming and Applications 
+ * Douglas Young's book "The X Window System, Programming and Applications
  * with Xt OSF/Motif Edition."  The layout code has been rewritten to use
  * additional blank space to make the structure of the graph easier to see
  * as well as to support vertical trees.
  */
-/* $XFree86: xc/lib/Xaw/TreeP.h,v 1.6 2001/01/17 19:42:35 dawes Exp $ */
-
 
 #ifndef _XawTreeP_h
 #define _XawTreeP_h

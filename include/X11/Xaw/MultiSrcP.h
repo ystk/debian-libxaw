@@ -1,5 +1,3 @@
-/* $Xorg: MultiSrcP.h,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $ */
-
 /*
  * Copyright 1991 by OMRON Corporation
  *
@@ -54,13 +52,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -71,7 +69,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/MultiSrcP.h,v 1.8 2001/01/17 19:42:28 dawes Exp $ */
 
 /*
  * MultiSrcP.h - Private Header for Multi Text Source.
@@ -83,11 +80,11 @@ SOFTWARE.
  * Date:    June 29, 1989
  *
  * By:      Chris D. Peterson
- *          MIT X Consortium 
+ *          MIT X Consortium
  *          kit@expo.lcs.mit.edu
  */
 
-/* 
+/*
  * This file was changed from AsciiSrcP.h.
  *
  * By Li Yuhong, Sept. 18, 1990
@@ -110,10 +107,10 @@ SOFTWARE.
 #endif
 #endif
 
-typedef struct _MultiPiece {	/* Piece of the text file of BUFSIZ allocated 
+typedef struct _MultiPiece {	/* Piece of the text file of BUFSIZ allocated
 				   characters */
     wchar_t* text;		/* The text in this buffer */
-    XawTextPosition used;	/* The number of characters of this buffer 
+    XawTextPosition used;	/* The number of characters of this buffer
 				   that have been used */
     struct _MultiPiece *prev, *next;	/* linked list pointers */
 } MultiPiece;
@@ -156,7 +153,7 @@ typedef struct _MultiSrcPart {
 #endif
     Boolean allocated_string;	/* Have I allocated the
 				   string in multi_src->string? */
-    XawTextPosition length; 	/* length of file - IN CHARACTERS, NOT BYTES */
+    XawTextPosition length;	/* length of file - IN CHARACTERS, NOT BYTES */
     MultiPiece *first_piece;	/* first piece of the text */
 #ifndef OLDXAW
     XtPointer pad[4];	/* for future use and keep binary compatability */

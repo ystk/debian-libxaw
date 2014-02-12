@@ -1,6 +1,3 @@
-/* $Xorg: Scrollbar.h,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $ */
-
-
 /***********************************************************
 
 Copyright 1987, 1988, 1998  The Open Group
@@ -30,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -47,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/Scrollbar.h,v 1.6 2001/01/17 19:42:29 dawes Exp $ */
 
 #ifndef _Scrollbar_h
 #define _Scrollbar_h
@@ -129,7 +125,7 @@ void XawScrollbarSetThumb
 #else
  float			top,
  float			shown
-#endif		 
+#endif
  );
 
 _XFUNCPROTOEND

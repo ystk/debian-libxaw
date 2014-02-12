@@ -1,5 +1,3 @@
-/* $Xorg: AsciiSink.c,v 1.4 2001/02/09 02:03:42 xorgcvs Exp $ */
-
 /***********************************************************
 
 Copyright 1987, 1988, 1994, 1998  The Open Group
@@ -29,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -46,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/AsciiSink.c,v 1.26 2001/12/14 19:54:38 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -334,7 +331,7 @@ void CalculateBearing(TextWidget ctx, XawTextPosition position, int x, int y,
  *	   |   ####	 |
  *	   |  ####	 |
  *	   | ####	 |
- *	   |### 	 |
+ *	   |###		 |
  *	 ####		 |
  *	   |		 |
  *
@@ -372,7 +369,7 @@ void CalculateBearing(TextWidget ctx, XawTextPosition position, int x, int y,
 		    c = ' ';
 	    }
 	    if (font->per_char &&
-	 	(c >= font->min_char_or_byte2 && c <= font->max_char_or_byte2))
+		(c >= font->min_char_or_byte2 && c <= font->max_char_or_byte2))
 		rbearing = font->per_char[c - font->min_char_or_byte2].rbearing -
 			   font->per_char[c - font->min_char_or_byte2].width;
 	    if (rbearing > 0) {
@@ -408,7 +405,7 @@ void CalculateBearing(TextWidget ctx, XawTextPosition position, int x, int y,
 		    c = ' ';
 	    }
 	    if (font->per_char &&
-	 	(c >= font->min_char_or_byte2 && c <= font->max_char_or_byte2))
+		(c >= font->min_char_or_byte2 && c <= font->max_char_or_byte2))
 		lbearing = font->per_char[c - font->min_char_or_byte2].lbearing;
 	    if (lbearing < 0) {
 		paint = XtNew(XawTextPaintStruct);
@@ -1710,7 +1707,7 @@ XawAsciiSinkInitialize(Widget request, Widget cnew,
     GetGC(sink);
 
     if (!sink->ascii_sink.font) XtError("Aborting: no font found\n");
-    
+
     sink->ascii_sink.cursor_position = 0;
     sink->ascii_sink.laststate = XawisOff;
     sink->ascii_sink.cursor_x = sink->ascii_sink.cursor_y = 0;

@@ -10,7 +10,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *  
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
@@ -24,8 +24,6 @@
  * dealings in this Software without prior written authorization from the
  * XFree86 Project.
  */
-
-/* $XFree86: xc/lib/Xaw/Pixmap.c,v 3.17 2002/05/18 02:05:39 paulo Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -677,7 +675,7 @@ GetResourcePixmapPath(Display *display)
     xrm_class[1] = NULLQUARK;
     if (!XrmGetDatabase(display))
 	(void) XGetDefault(display, "", "");
-    if (XrmQGetResource(XrmGetDatabase(display), xrm_name, xrm_class, 
+    if (XrmQGetResource(XrmGetDatabase(display), xrm_name, xrm_class,
 			&rep_type, &value) &&
 			rep_type == XrmPermStringToQuark("String")) {
 	int length = 0;
@@ -861,7 +859,7 @@ GradientLoader(XawParams *params, Screen *screen, Colormap colormap, int depth,
     return (False);
 
   ired   = (double)(end.red   - start.red)   / (double)steps;
-  igreen = (double)(end.green - start.green) / (double)steps; 
+  igreen = (double)(end.green - start.green) / (double)steps;
   iblue  = (double)(end.blue  - start.blue)  / (double)steps;
 
   red   = color.red   = start.red;

@@ -1,5 +1,3 @@
-/* $Xorg: Label.c,v 1.5 2001/02/09 02:03:43 xorgcvs Exp $ */
-
 /***********************************************************
 
 Copyright 1987, 1988, 1994, 1998  The Open Group
@@ -29,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -46,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/Label.c,v 1.12 2001/01/17 19:42:27 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -471,7 +468,7 @@ GetGrayGC(LabelWidget lw)
     values.font	      = lw->label.font->fid;
     values.fill_style = FillTiled;
     values.tile       = XmuCreateStippledPixmap(XtScreen((Widget)lw),
-						lw->label.foreground, 
+						lw->label.foreground,
 						lw->core.background_pixel,
 						lw->core.depth);
     values.graphics_exposures = False;
@@ -485,7 +482,7 @@ GetGrayGC(LabelWidget lw)
 					 GCGraphicsExposures,
 					 &values, GCFont, 0);
 	else
-	    lw->label.gray_GC = XtGetGC((Widget)lw, 
+	    lw->label.gray_GC = XtGetGC((Widget)lw,
 					GCForeground | GCBackground |
 					GCFont | GCTile | GCFillStyle |
 					GCGraphicsExposures,
@@ -496,7 +493,7 @@ static void
 compute_bitmap_offsets(LabelWidget lw)
 {
     /*
-     * bitmap will be eventually be displayed at 
+     * bitmap will be eventually be displayed at
      * (internal_width, internal_height + lbm_y)
      */
     if (lw->label.lbm_height != 0)
@@ -530,10 +527,10 @@ XawLabelInitialize(Widget request, Widget cnew,
     LabelWidget lw = (LabelWidget)cnew;
 
     if (!lw->label.font) XtError("Aborting: no font found\n");
-    if (lw->simple.international && !lw->label.fontset) 
+    if (lw->simple.international && !lw->label.fontset)
 	XtError("Aborting: no fontset found\n");
-    
-    if (lw->label.label == NULL) 
+
+    if (lw->label.label == NULL)
 	lw->label.label = XtNewString(lw->core.name);
     else
 	lw->label.label = XtNewString(lw->label.label);
@@ -618,7 +615,7 @@ XawLabelRedisplay(Widget gw, XEvent *event, Region region)
 		    else
 			XDrawString(XtDisplay(gw), XtWindow(gw), gc,
 				    w->label.label_x, y, label, (int)(nl - label));
-		    y += w->label.font->max_bounds.ascent + 
+		    y += w->label.font->max_bounds.ascent +
 			 w->label.font->max_bounds.descent;
 		    label = nl + 1;
 		}
@@ -727,7 +724,7 @@ XawLabelSetValues(Widget current, Widget request, Widget cnew,
     if (curlw->label.encoding != newlw->label.encoding)
 	was_resized = True;
 
-    if (curlw->simple.international 
+    if (curlw->simple.international
 	&& curlw->label.fontset != newlw->label.fontset)
 	was_resized = True;
 

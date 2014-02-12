@@ -56,14 +56,18 @@ COMMON_SOURCES = \
 	XawI18n.h
 
 COMMON_CFLAGS = \
-	$(CWARNFLAGS) \
+	$(CWARNFLAGS)
+
+COMMON_CPPFLAGS = \
 	-I${top_srcdir}/include \
-	-I${top_srcdir}/include/X11/Xaw \
 	-DPROJECT_ROOT=\"$(prefix)\"
 
 if BUILD_XAW6
 
 lib_LTLIBRARIES += libXaw6.la
+
+libXaw6_la_CPPFLAGS =			\
+	$(COMMON_CPPFLAGS)
 
 libXaw6_la_CFLAGS =			\
 	$(COMMON_CFLAGS)		\
@@ -85,6 +89,13 @@ else
 	-rm -f $(DESTDIR)$(libdir)/libXaw.@LIBEXT@.6
 	(cd $(DESTDIR)$(libdir) && ln -s libXaw6.@LIBEXT@.6 libXaw.@LIBEXT@.6)
 endif
+
+uninstall-local::
+if PLATFORM_DARWIN
+	-rm -f $(DESTDIR)$(libdir)/libXaw.6.@LIBEXT@
+else
+	-rm -f $(DESTDIR)$(libdir)/libXaw.@LIBEXT@.6
+endif
 endif
 
 endif
@@ -92,6 +103,9 @@ endif
 if BUILD_XAW7
 
 lib_LTLIBRARIES += libXaw7.la
+
+libXaw7_la_CPPFLAGS =			\
+	$(COMMON_CPPFLAGS)
 
 libXaw7_la_CFLAGS =			\
 	$(COMMON_CFLAGS)		\
@@ -113,6 +127,13 @@ if PLATFORM_DARWIN
 else
 	-rm -f $(DESTDIR)$(libdir)/libXaw.@LIBEXT@.7
 	(cd $(DESTDIR)$(libdir) && ln -s libXaw7.@LIBEXT@.7 libXaw.@LIBEXT@.7)
+endif
+
+uninstall-local::
+if PLATFORM_DARWIN
+	-rm -f $(DESTDIR)$(libdir)/libXaw.7.@LIBEXT@
+else
+	-rm -f $(DESTDIR)$(libdir)/libXaw.@LIBEXT@.7
 endif
 endif
 

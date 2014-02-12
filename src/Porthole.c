@@ -1,5 +1,4 @@
 /*
- * $Xorg: Porthole.c,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $
  *
 Copyright 1990, 1994, 1998  The Open Group
 
@@ -24,11 +23,10 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
  *
  * Author:  Jim Fulton, MIT X Consortium
- * 
+ *
  * This widget is a trivial clipping widget.  It is typically used with a
  * panner or scrollbar to navigate.
  */
-/* $XFree86: xc/lib/Xaw/Porthole.c,v 1.6 2001/01/17 19:42:29 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -114,7 +112,7 @@ PortholeClassRec portholeClassRec = {
     NULL,				/* extension */
   },
   /* composite */
-  { 
+  {
     XawPortholeGeometryManager,		/* geometry_manager */
     XawPortholeChangeManaged,		/* change_managed */
     XtInheritInsertChild,		/* insert_child */
@@ -369,7 +367,7 @@ XawPortholeChangeManaged(Widget gw)
 		== XtGeometryAlmost)
 		(void)XtMakeGeometryRequest(gw, &retgeom, NULL);
 	}
-	
+
 	XtResizeWidget(child, Max(XtWidth(child), XtWidth(pw)),
 		       Max(XtHeight(child), XtHeight(pw)), 0);
 

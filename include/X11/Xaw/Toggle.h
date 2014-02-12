@@ -1,5 +1,4 @@
 /*
- * $Xorg: Toggle.h,v 1.4 2001/02/09 02:03:47 xorgcvs Exp $
  *
 Copyright 1989, 1994, 1998  The Open Group
 
@@ -23,7 +22,6 @@ Except as contained in this notice, the name of The Open Group shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
  */
-/* $XFree86: xc/lib/Xaw/Toggle.h,v 1.5 2001/01/17 19:42:35 dawes Exp $ */
 
 /*
  * ToggleP.h - Private definitions for Toggle widget
@@ -31,7 +29,7 @@ in this Software without prior written authorization from The Open Group.
  * Author: Chris D. Peterson
  *         MIT X Consortium
  *         kit@expo.lcs.mit.edu
- *  
+ *
  * Date:   January 12, 1989
  */
 
@@ -107,7 +105,7 @@ typedef struct _ToggleRec        *ToggleWidget;
  */
 
 _XFUNCPROTOBEGIN
-   
+
 /*
  * Function:
  *	XawToggleChangeRadioGroup

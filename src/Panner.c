@@ -1,5 +1,4 @@
 /*
- * $Xorg: Panner.c,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $
  *
 Copyright 1989, 1994, 1998  The Open Group
 
@@ -25,8 +24,6 @@ in this Software without prior written authorization from The Open Group.
  *
  * Author:  Jim Fulton, MIT X Consortium
  */
-
-/* $XFree86: xc/lib/Xaw/Panner.c,v 3.8 2001/07/25 15:04:49 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -638,7 +635,7 @@ parse_page_string(char *s, int pagesize, int canvassize, Bool *relative)
 XmuLocatePixmapFile(pw->core.screen, pw->panner.stipple_name,		\
 		    pw->panner.shadow_color, pw->core.background_pixel,	\
 		    pw->core.depth, NULL, 0, NULL, NULL, NULL, NULL)
-    
+
 #define PIXMAP_OKAY(pm) ((pm) != None && (pm) != XtUnspecifiedPixmap)
 
 /*ARGSUSED*/
@@ -666,7 +663,7 @@ XawPannerInitialize(Widget greq, Widget gnew, ArgList args, Cardinal *num_args)
     cnew->panner.slider_gc = NULL;
     reset_slider_gc(cnew);		/* foreground */
     cnew->panner.xor_gc = NULL;
-    reset_xor_gc(cnew); 		/* foreground ^ background */
+    reset_xor_gc(cnew);			/* foreground ^ background */
 
     rescale(cnew);			/* does a position check */
     cnew->panner.shadow_valid = False;
@@ -825,7 +822,7 @@ XawPannerSetValues(Widget gcur, Widget greq, Widget gnew,
 	Bool loc = cur->panner.slider_x != cnew->panner.slider_x ||
 		   cur->panner.slider_y != cnew->panner.slider_y;
 	Bool siz = cur->panner.slider_width != cnew->panner.slider_width ||
-	 	   cur->panner.slider_height != cnew->panner.slider_height;
+		   cur->panner.slider_height != cnew->panner.slider_height;
 	if (loc || siz || (cur->panner.allow_off != cnew->panner.allow_off
 			   && cnew->panner.allow_off)) {
 	    scale_knob(cnew, loc, siz);

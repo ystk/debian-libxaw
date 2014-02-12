@@ -1,5 +1,4 @@
 /*
- * $Xorg: SmeP.h,v 1.4 2001/02/09 02:03:46 xorgcvs Exp $
  *
 Copyright 1989, 1994, 1998  The Open Group
 
@@ -23,16 +22,15 @@ Except as contained in this notice, the name of The Open Group shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
  */
-/* $XFree86: xc/lib/Xaw/SmeP.h,v 1.8 2001/12/14 19:54:43 dawes Exp $ */
 
 /*
  * This is the private header file for the Athena Sme object.
- * This object is intended to be used with the simple menu widget.  
+ * This object is intended to be used with the simple menu widget.
  *
  * Date:    April 3, 1989
  *
  * By:      Chris D. Peterson
- *          MIT X Consortium 
+ *          MIT X Consortium
  *          kit@expo.lcs.mit.edu
  */
 

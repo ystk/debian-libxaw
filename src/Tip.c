@@ -27,8 +27,6 @@
  * Author: Paulo César Pereira de Andrade
  */
 
-/* $XFree86: xc/lib/Xaw/Tip.c,v 1.4 1999/07/11 08:49:16 dawes Exp $ */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -249,7 +247,7 @@ XawTipInitialize(Widget req, Widget w, ArgList args, Cardinal *num_args)
     if (!tip->tip.font) XtError("Aborting: no font found\n");
     if (tip->tip.international && !tip->tip.fontset)
 	XtError("Aborting: no fontset found\n");
-    
+
     tip->tip.timer = 0;
 
     values.foreground = tip->tip.foreground;
@@ -354,7 +352,7 @@ XawTipExpose(Widget w, XEvent *event, Region region)
 	    else
 		XDrawString(XtDisplay(w), XtWindow(w), gc,
 			    tip->tip.left_margin, y, label, (int)(nl - label));
-	    y += tip->tip.font->max_bounds.ascent + 
+	    y += tip->tip.font->max_bounds.ascent +
 		 tip->tip.font->max_bounds.descent;
 	    label = nl + 1;
 	}

@@ -1,5 +1,3 @@
-/* $Xorg: Text.c,v 1.4 2001/02/09 02:03:46 xorgcvs Exp $ */
-
 /***********************************************************
 
 Copyright 1987, 1988, 1994, 1998  The Open Group
@@ -29,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -74,8 +72,6 @@ SOFTWARE.
  * XFree86 Project.
  */
 
-/* $XFree86: xc/lib/Xaw/Text.c,v 3.53tsi Exp $ */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -87,7 +83,6 @@ SOFTWARE.
 #include <X11/Xfuncs.h>
 #include <X11/Xutil.h>
 #include <X11/Xmu/Misc.h>
-#include <X11/Xmu/SysUtil.h>
 #include <X11/Xmu/Xmu.h>
 #include <X11/Xaw/Cardinals.h>
 #include <X11/Xaw/MultiSinkP.h>
@@ -312,7 +307,7 @@ static XtResource resources[] = {
     XtNdisplayPosition,
     XtCTextPosition,
     XtRInt,
-    sizeof(XawTextPosition), 
+    sizeof(XawTextPosition),
     offset(text.lt.top),
     XtRImmediate,
     (XtPointer)0
@@ -699,7 +694,7 @@ XawTextClassInitialize(void)
     XawInitializeWidgetSet();
 
     textClassRec.core_class.num_actions = _XawTextActionsTableCount;
-  
+
     QWrapNever	= XrmPermStringToQuark(XtEtextWrapNever);
     QWrapLine	= XrmPermStringToQuark(XtEtextWrapLine);
     QWrapWord	= XrmPermStringToQuark(XtEtextWrapWord);
@@ -975,7 +970,7 @@ XawTextRealize(Widget w, XtValueMask *mask, XSetWindowAttributes *attr)
     TextWidget ctx = (TextWidget)w;
 
     (*textClassRec.core_class.superclass->core_class.realize)(w, mask, attr);
-  
+
     if (ctx->text.hbar != NULL) {
 	XtRealizeWidget(ctx->text.hbar);
 	XtMapWidget(ctx->text.hbar);
@@ -1096,7 +1091,7 @@ _XawTextGetText(TextWidget ctx, XawTextPosition left, XawTextPosition right)
 
     if (XawTextFormat(ctx, XawFmt8Bit))
 	bytes = sizeof(unsigned char);
-    else if (XawTextFormat(ctx, XawFmtWide)) 
+    else if (XawTextFormat(ctx, XawFmtWide))
 	bytes = sizeof(wchar_t);
     else /* if there is another fomat, add here */
 	bytes = 1;
@@ -1167,7 +1162,7 @@ _XawTextGetSTRING(TextWidget ctx, XawTextPosition left, XawTextPosition right)
     }
 }
 
-/* 
+/*
  * This routine maps an x and y position in a window that is displaying text
  * into the corresponding position in the source.
  */
@@ -2023,7 +2018,7 @@ TextConvertSelection(Widget w, Atom *selection, Atom *target, Atom *type,
 	}
 	else
 	    *type = *target;
-	/* 
+	/*
 	 * If salt is True, the salt->contents stores CT string,
 	 * its length is measured in bytes.
 	 * Refer to _XawTextSaltAwaySelection().
@@ -2040,7 +2035,7 @@ TextConvertSelection(Widget w, Atom *selection, Atom *target, Atom *type,
 		    XtFree((char *)*value);
 		    return (False);
 		}
-	 	XtFree((char *)*value);
+		XtFree((char *)*value);
 		*value = (XtPointer)textprop.value;
 		*length = textprop.nitems;
 	    }
@@ -2220,7 +2215,7 @@ TextLoseSelection(Widget w, Atom *selection)
 	while (salt->s.atom_count
 	       && salt->s.selections[salt->s.atom_count-1] == 0)
 	    salt->s.atom_count--;
-    	
+
 	/*
 	 * Must walk the selection list in opposite order from UnsetSelection
 	 */
@@ -3627,7 +3622,7 @@ XawTextDestroy(Widget w)
 
 /*
  * by the time we are managed (and get this far) we had better
- * have both a source and a sink 
+ * have both a source and a sink
  */
 static void
 XawTextResize(Widget w)
@@ -3942,13 +3937,13 @@ XawTextReplace(Widget w, XawTextPosition startPos, XawTextPosition endPos,
     return (result);
 }
 
-XawTextPosition 
+XawTextPosition
 XawTextTopPosition(Widget w)
 {
     return (((TextWidget)w)->text.lt.top);
 }
 
-XawTextPosition 
+XawTextPosition
 XawTextLastPosition(Widget w)
 {
     return (((TextWidget)w)->text.lastPos);
@@ -4031,7 +4026,7 @@ XawTextDisableRedisplay(Widget w)
     _XawTextPrepareToUpdate((TextWidget)w);
 }
 
-void 
+void
 XawTextEnableRedisplay(Widget w)
 {
     TextWidget ctx = (TextWidget)w;
@@ -4115,7 +4110,7 @@ XawTextSearch(Widget w,
 TextClassRec textClassRec = {
   /* core */
   {
-    (WidgetClass)&simpleClassRec,	/* superclass */ 
+    (WidgetClass)&simpleClassRec,	/* superclass */
     "Text",				/* class_name */
     sizeof(TextRec),			/* widget_size */
     XawTextClassInitialize,		/* class_initialize */

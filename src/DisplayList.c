@@ -10,7 +10,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *  
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
@@ -27,8 +27,6 @@
  * Author: Paulo César Pereira de Andrade
  */
 
-/* $XFree86: xc/lib/Xaw/DisplayList.c,v 3.18 2003/05/23 14:51:15 tsi Exp $ */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -41,7 +39,6 @@
 #include <X11/CoreP.h>
 #include <X11/Xfuncs.h>
 #include <X11/Xmu/CharSet.h>
-#include <X11/Xmu/SysUtil.h>
 #include "Private.h"
 
 #ifdef __UNIXOS2__
@@ -275,8 +272,8 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
 	{
 	  char msg[256];
 
-	  XmuSnprintf(msg, sizeof(msg),
-		      "Error parsing displayList at \"%s\"", lp);
+	  snprintf(msg, sizeof(msg),
+		   "Error parsing displayList at \"%s\"", lp);
 	  XtAppWarning(XtDisplayToApplicationContext(DisplayOfScreen(screen)),
 		       msg);
 	  XawDestroyDisplayList(dlist);
@@ -293,15 +290,15 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
 	}
       if (fp)
 	{
-	  XmuSnprintf(cname, fp - fname + 1, fname);
+	  snprintf(cname, fp - fname + 1, fname);
 	  memmove(fname, fp + 1, strlen(fp));
 	  lc = cname[0] ? XawGetDisplayListClass(cname) : xlibc;
 	  if (!lc)
 	    {
 	      char msg[256];
 
-	      XmuSnprintf(msg, sizeof(msg),
-			  "Cannot find displayList class \"%s\"", cname);
+	      snprintf(msg, sizeof(msg),
+		       "Cannot find displayList class \"%s\"", cname);
 	      XtAppWarning(XtDisplayToApplicationContext
 			   (DisplayOfScreen(screen)), msg);
 	      XawDestroyDisplayList(dlist);
@@ -318,8 +315,8 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
 	{
 	  char msg[256];
 
-	  XmuSnprintf(msg, sizeof(msg),
-		      "Cannot find displayList procedure \"%s\"", fname);
+	  snprintf(msg, sizeof(msg),
+		   "Cannot find displayList procedure \"%s\"", fname);
 	  XtAppWarning(XtDisplayToApplicationContext(DisplayOfScreen(screen)),
 		       msg);
 	  XawDestroyDisplayList(dlist);
@@ -357,8 +354,8 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
 	    {
 	      char msg[256];
 
-	      XmuSnprintf(msg, sizeof(msg),
-			  "Error parsing displayList at \"%s\"", lp);
+	      snprintf(msg, sizeof(msg),
+		       "Error parsing displayList at \"%s\"", lp);
 	      XtAppWarning(XtDisplayToApplicationContext
 			   (DisplayOfScreen(screen)), msg);
 	      XawDestroyDisplayList(dlist);
@@ -422,8 +419,9 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
 	      char msg[256];
 
 	      proc->args = NULL;
-	      XmuSnprintf(msg, sizeof(msg),
-			  "Cannot convert arguments to displayList function \"%s\"", fname);
+	      snprintf(msg, sizeof(msg),
+		       "Cannot convert arguments to displayList function \"%s\"",
+		       fname);
 	      XtAppWarning(XtDisplayToApplicationContext
 			   (DisplayOfScreen(screen)), msg);
 	      XawDestroyDisplayList(dlist);
