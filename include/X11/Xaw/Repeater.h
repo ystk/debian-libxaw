@@ -1,5 +1,4 @@
 /*
- * $Xorg: Repeater.h,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $
  *
 Copyright 1989, 1998  The Open Group
 
@@ -25,7 +24,6 @@ in this Software without prior written authorization from The Open Group.
  *
  * Author:  Jim Fulton, MIT X Consortium
  */
-/* $XFree86: xc/lib/Xaw/Repeater.h,v 1.5 2001/01/17 19:42:29 dawes Exp $ */
 
 #ifndef _XawRepeater_h
 #define _XawRepeater_h
@@ -33,16 +31,16 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/Xaw/Command.h>
 
 /*****************************************************************************
- * 
+ *
  * Repeater Widget (subclass of Command)
- * 
+ *
  * This widget is a push button that repeatedly fires when held down
- * 
+ *
  * Parameters:
- * 
+ *
  *  Name		Class		Type		Default
  *  ----		-----		----		-------
- * 
+ *
  *  decay		Decay		int		5 milliseconds
  *  flash		Boolean		Boolean		FALSE
  *  initialDelay	Delay		int		200 milliseconds
@@ -50,7 +48,7 @@ in this Software without prior written authorization from The Open Group.
  *  repeatDelay		Delay		int		50 milliseconds
  *  startCallback	StartCallback	XtCallbackList	NULL
  *  stopCallback	StopCallback	XtCallbackList	NULL
- * 
+ *
  *****************************************************************************/
 
 #define XtNdecay "decay"

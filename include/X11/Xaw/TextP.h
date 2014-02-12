@@ -1,8 +1,3 @@
-/*
-* $Xorg: TextP.h,v 1.4 2001/02/09 02:03:46 xorgcvs Exp $
-*/
-
-
 /***********************************************************
 
 Copyright 1987, 1988, 1994, 1998  The Open Group
@@ -32,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -49,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/TextP.h,v 3.21 2001/12/14 19:54:44 dawes Exp $ */
 
 #ifndef _XawTextP_h
 #define _XawTextP_h
@@ -110,10 +104,10 @@ typedef struct {
 typedef struct _XawTextSelectionSalt {
     struct _XawTextSelectionSalt *next;
     XawTextSelection	s;
-    /* 
+    /*
      * The element "contents" stores the CT string which is gotten in the
      * function _XawTextSaltAwaySelection()
-    */ 
+    */
     char		*contents;
     int			length;
 } XawTextSelectionSalt;
@@ -164,11 +158,11 @@ struct SearchAndReplace {
     Widget search_popup;	/* The poppup widget that allows searches.*/
     Widget label1;		/* The label widgets for the search window. */
     Widget label2;
-    Widget left_toggle; 	/* The left search toggle radioGroup. */
+    Widget left_toggle;		/* The left search toggle radioGroup. */
     Widget right_toggle;	/* The right search toggle radioGroup. */
     Widget rep_label;		/* The Replace label string. */
     Widget rep_text;		/* The Replace text field. */
-    Widget search_text; 	/* The Search text field. */
+    Widget search_text;		/* The Search text field. */
     Widget rep_one;		/* The Replace one button. */
     Widget rep_all;		/* The Replace all button. */
 #ifndef OLDXAW

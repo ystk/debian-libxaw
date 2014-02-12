@@ -1,5 +1,3 @@
-/* $Xorg: Scrollbar.c,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $ */
-
 /***********************************************************
 
 Copyright 1987, 1988, 1994, 1998  The Open Group
@@ -29,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -46,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/Scrollbar.c,v 1.12 2001/01/17 19:42:29 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -375,7 +372,7 @@ FillArea(ScrollbarWidget w, int top, int bottom, int thumb)
     Dimension length;
 
     top = XawMax(1, top);
-    if (w->scrollbar.orientation == XtorientHorizontal) 
+    if (w->scrollbar.orientation == XtorientHorizontal)
     bottom = XawMin(bottom, XtWidth(w) - 1);
     else
     bottom = XawMin(bottom, XtHeight(w) - 1);
@@ -388,7 +385,7 @@ FillArea(ScrollbarWidget w, int top, int bottom, int thumb)
     switch(thumb) {
 	/* Fill the new Thumb location */
 	case 1:
-	    if (w->scrollbar.orientation == XtorientHorizontal) 
+	    if (w->scrollbar.orientation == XtorientHorizontal)
 		XFillRectangle(XtDisplay(w), XtWindow(w), w->scrollbar.gc,
 			       top, 1, length, XtHeight(w) - 2);
 	    else
@@ -397,7 +394,7 @@ FillArea(ScrollbarWidget w, int top, int bottom, int thumb)
 	    break;
 	/* Clear the old Thumb location */
 	case 0:
-	    if (w->scrollbar.orientation == XtorientHorizontal) 
+	    if (w->scrollbar.orientation == XtorientHorizontal)
 		XClearArea(XtDisplay(w), XtWindow(w),
 			   top, 1, length, XtHeight(w) - 2, False);
 	    else
@@ -420,7 +417,7 @@ PaintThumb(ScrollbarWidget w)
     oldbot = oldtop + w->scrollbar.shownLength;
     newtop = w->scrollbar.length * w->scrollbar.top;
     newbot = newtop + (int)(w->scrollbar.length * w->scrollbar.shown);
-    if (newbot < newtop + (int)w->scrollbar.min_thumb) 
+    if (newbot < newtop + (int)w->scrollbar.min_thumb)
 	newbot = newtop + w->scrollbar.min_thumb;
     w->scrollbar.topLoc = newtop;
     w->scrollbar.shownLength = newbot - newtop;
@@ -454,7 +451,7 @@ static void
 XawScrollbarDestroy(Widget w)
 {
     ScrollbarWidget sbw = (ScrollbarWidget)w;
-    
+
     XtReleaseGC(w, sbw->scrollbar.gc);
 }
 
@@ -532,7 +529,7 @@ XawScrollbarRealize(Widget gw, Mask *valueMask,
 
     XtVaSetValues(gw, XtNcursor, w->scrollbar.inactiveCursor, NULL);
 
-    /* 
+    /*
      * The Simple widget actually stuffs the value in the valuemask
      */
     (*scrollbarWidgetClass->core_class.superclass->core_class.realize)
@@ -540,7 +537,7 @@ XawScrollbarRealize(Widget gw, Mask *valueMask,
 }
 
 /*ARGSUSED*/
-static Boolean 
+static Boolean
 XawScrollbarSetValues(Widget current, Widget request, Widget desired,
 		      ArgList args, Cardinal *num_args)
 {

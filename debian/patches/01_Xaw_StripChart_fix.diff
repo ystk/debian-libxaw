@@ -16,18 +16,16 @@ This patch makes part heights differ no more than by 1 pixel.
 
 Debian bug#167448 <http://bugs.debian.org/167448>
 
-Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
-===================================================================
---- libXaw-X11R7.0-1.0.1.orig/src/StripChart.c	2005-12-30 14:50:24.000000000 -0500
-+++ libXaw-X11R7.0-1.0.1/src/StripChart.c	2006-02-26 19:09:07.000000000 -0500
-@@ -373,12 +373,12 @@
+--- a/src/StripChart.c
++++ b/src/StripChart.c
+@@ -370,12 +370,12 @@ draw_it(XtPointer client_data, XtInterva
   * the returned value is identical to the initial value of next and data is
   * unchanged.  Otherwise keeps half a window's worth of data.  If data is
   * changed, then w->strip_chart.max_value is updated to reflect the
 - * largest data point
 + * largest data point.
   */
--static int 
+-static int
 +static int
  repaint_window(StripChartWidget w, int left, int width)
  {
@@ -36,7 +34,7 @@ Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
      int next = w->strip_chart.interval;
      int scale = w->strip_chart.scale;
      int scalewidth = 0;
-@@ -423,8 +423,10 @@
+@@ -420,8 +420,10 @@ repaint_window(StripChartWidget w, int l
  	}
  
  	/* Draw graph reference lines */
@@ -48,7 +46,7 @@ Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
  	    XDrawLine(dpy, win, w->strip_chart.hiGC, left, j, scalewidth, j);
  	}
      }
-@@ -446,7 +448,7 @@
+@@ -443,7 +445,7 @@ static void
  MoveChart(StripChartWidget w, Bool blit)
  {
      double old_max;
@@ -57,7 +55,7 @@ Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
      int next = w->strip_chart.interval;
  
      if (!XtIsRealized((Widget)w))
-@@ -495,8 +497,10 @@
+@@ -492,8 +494,10 @@ MoveChart(StripChartWidget w, Bool blit)
  
      /* Draw graph reference lines */
      left = j;
@@ -69,7 +67,7 @@ Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
  	XDrawLine(XtDisplay((Widget)w), XtWindow((Widget)w),
  		  w->strip_chart.hiGC, left, j, XtWidth(w), j);
      }
-@@ -557,23 +561,26 @@
+@@ -554,23 +558,26 @@ XawStripChartResize(Widget widget)
      StripChartWidget w = (StripChartWidget)widget;
      XPoint *points;
      Cardinal size;
@@ -81,7 +79,7 @@ Index: libXaw-X11R7.0-1.0.1/src/StripChart.c
  	w->strip_chart.points = NULL;
  	return;
      }
--    
+-
 +
      size = sizeof(XPoint) * (w->strip_chart.scale - 1);
  

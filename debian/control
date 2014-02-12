@@ -2,9 +2,12 @@ Source: libxaw
 Section: x11
 Priority: optional
 Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
-Uploaders: David Nusinow <dnusinow@debian.org>, Drew Parsons <dparsons@debian.org>, Brice Goglin <bgoglin@debian.org>, Julien Cristau <jcristau@debian.org>
+Uploaders:
+ Drew Parsons <dparsons@debian.org>,
+ Cyril Brulebois <kibi@debian.org>
 Build-Depends:
  debhelper (>= 5),
+ dpkg-dev (>= 1.16.0),
  libx11-dev (>= 1:0.99.2),
  x11proto-core-dev (>= 7.0.1),
  libxt-dev (>= 1:0.99.1),
@@ -17,18 +20,21 @@ Build-Depends:
  autoconf,
  automake,
  libtool,
- xutils-dev (>= 1:7.5~1),
-# specs
- groff,
- ghostscript,
-Standards-Version: 3.8.3
+ xutils-dev (>= 1:7.5+4),
+# specs:
+ xmlto, xorg-sgml-doctools (>= 1:1.5), w3m,
+Standards-Version: 3.9.1
 Vcs-Git: git://git.debian.org/git/pkg-xorg/lib/libxaw
 Vcs-Browser: http://git.debian.org/?p=pkg-xorg/lib/libxaw.git
 
 Package: libxaw7
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
 Description: X11 Athena Widget library
  libXaw7 provides the second version of Xaw, the Athena Widgets tookit,
  which is largely used by legacy X applications.  This version is the
@@ -38,8 +44,6 @@ Description: X11 Athena Widget library
  .
  More information about X.Org can be found at:
  <URL:http://www.X.org>
- <URL:http://xorg.freedesktop.org>
- <URL:http://lists.freedesktop.org/mailman/listinfo/xorg>
  .
  This module can be found at
  git://anongit.freedesktop.org/git/xorg/lib/libXaw
@@ -47,8 +51,12 @@ Description: X11 Athena Widget library
 Package: libxaw7-dbg
 Section: debug
 Architecture: any
+Multi-Arch: same
 Priority: extra
-Depends: ${shlibs:Depends}, ${misc:Depends}, libxaw7 (= ${binary:Version})
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libxaw7 (= ${binary:Version}),
 Description: X11 Athena Widget library (debug package)
  libXaw7 provides the second version of Xaw, the Athena Widgets tookit,
  which is largely used by legacy X applications.  This version is the
@@ -61,8 +69,6 @@ Description: X11 Athena Widget library (debug package)
  .
  More information about X.Org can be found at:
  <URL:http://www.X.org>
- <URL:http://xorg.freedesktop.org>
- <URL:http://lists.freedesktop.org/mailman/listinfo/xorg>
  .
  This module can be found at
  git://anongit.freedesktop.org/git/xorg/lib/libXaw
@@ -70,10 +76,17 @@ Description: X11 Athena Widget library (debug package)
 Package: libxaw7-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libxaw7 (= ${binary:Version}), libx11-dev, libxmu-dev, libxpm-dev, x11proto-core-dev
-Pre-Depends: x11-common (>= 1:7.0.0)
-Conflicts: libxaw6-dev, libxaw8-dev, libxaw-headers (<< 2:1.0.4-2)
-Replaces: libxaw6-dev, libxaw8-dev, libxaw-headers (<< 2:1.0.4-2)
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libxaw7 (= ${binary:Version}),
+ libx11-dev,
+ libxmu-dev,
+ libxpm-dev,
+ x11proto-core-dev,
+Suggests:
+ libxaw-doc,
 Description: X11 Athena Widget library (development headers)
  libXaw7 provides the second version of Xaw, the Athena Widgets tookit,
  which is largely used by legacy X applications.  This version is the
@@ -86,8 +99,21 @@ Description: X11 Athena Widget library (development headers)
  .
  More information about X.Org can be found at:
  <URL:http://www.X.org>
- <URL:http://xorg.freedesktop.org>
- <URL:http://lists.freedesktop.org/mailman/listinfo/xorg>
  .
  This module can be found at
  git://anongit.freedesktop.org/git/xorg/lib/libXaw
+
+Package: libxaw-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+Breaks:
+ libxaw7-dev (<< 2:1.0.10),
+Replaces:
+ libxaw7-dev (<< 2:1.0.10),
+Description: X11 Athena Widget library (documentation)
+ Xaw, the Athena Widgets tookit, is largely used by legacy X applications.
+ .
+ This package contains the documentation for the Xaw library.

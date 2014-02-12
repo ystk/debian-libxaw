@@ -1,5 +1,4 @@
 /*
- * $Xorg: SimpleMenP.h,v 1.4 2001/02/09 02:03:45 xorgcvs Exp $
  *
 Copyright 1989, 1994, 1998  The Open Group
 
@@ -24,7 +23,6 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
  *
  */
-/* $XFree86: xc/lib/Xaw/SimpleMenP.h,v 1.12 2001/01/17 19:42:30 dawes Exp $ */
 
 /*
  * SimpleMenuP.h - Private Header file for SimpleMenu widget.
@@ -75,7 +73,7 @@ typedef struct _SimpleMenuPart {
 
     /* private */
     Boolean	recursive_set_values; /* contain a possible infinite loop */
-    Boolean	menu_width;	/* If true then force width to remain 
+    Boolean	menu_width;	/* If true then force width to remain
 				   core.width */
     Boolean	menu_height;	/* Just like menu_width, but for height */
     SmeObject	entry_set;	/* The entry that is currently set or
@@ -92,7 +90,7 @@ typedef struct _SimpleMenuPart {
 
 typedef struct _SimpleMenuRec {
     CorePart		core;
-    CompositePart 	composite;
+    CompositePart	composite;
     ShellPart		shell;
     OverrideShellPart	override;
     SimpleMenuPart	simple_menu;

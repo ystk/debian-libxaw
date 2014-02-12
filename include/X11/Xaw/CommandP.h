@@ -1,8 +1,3 @@
-/*
-* $Xorg: CommandP.h,v 1.4 2001/02/09 02:03:43 xorgcvs Exp $
-*/
-
-
 /***********************************************************
 
 Copyright 1987, 1988, 1998  The Open Group
@@ -32,13 +27,13 @@ Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -49,7 +44,6 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
 SOFTWARE.
 
 ******************************************************************/
-/* $XFree86: xc/lib/Xaw/CommandP.h,v 1.7 2001/01/17 19:42:26 dawes Exp $ */
 
 #ifndef _XawCommandP_h
 #define _XawCommandP_h
@@ -63,7 +57,7 @@ SOFTWARE.
 typedef enum {
     HighlightNone,		/* Do not highlight */
     HighlightWhenUnset,		/* Highlight only when unset, this is
-				   to preserve current command widget 
+				   to preserve current command widget
 				   functionality */
     HighlightAlways		/* Always highlight, lets the toggle widget
 				   and other subclasses do the right thing */
@@ -91,14 +85,14 @@ typedef struct {
     XtCallbackList callbacks;
 
     /* private state */
-    Pixmap      	gray_pixmap;
-    GC          	normal_GC;
-    GC          	inverse_GC;
-    Boolean     	set;
+    Pixmap	gray_pixmap;
+    GC		normal_GC;
+    GC		inverse_GC;
+    Boolean	set;
     XtCommandHighlight	highlighted;
 
     /* more resources */
-    int			shape_style;    
+    int			shape_style;
     Dimension		corner_round;
 
 #ifndef OLDXAW

@@ -1,6 +1,6 @@
-usr/lib/libXaw7.a
-usr/lib/libXaw7.so
-usr/lib/pkgconfig/xaw7.pc
+usr/lib/*/libXaw7.a
+usr/lib/*/libXaw7.so
+usr/lib/*/libXaw.so
+usr/lib/*/pkgconfig/xaw7.pc
 usr/include/X11/*
 usr/share/man/man3/*
-usr/share/doc/libXaw/* usr/share/doc/libxaw7-dev

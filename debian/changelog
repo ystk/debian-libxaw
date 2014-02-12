@@ -1,3 +1,85 @@
+libxaw (2:1.0.10-2) unstable; urgency=low
+
+  * *sigh* add missing Replaces/Breaks on libxaw7-dev for the new -doc
+    package.  Some day I'll remember to add those the first time.
+
+ -- Julien Cristau <jcristau@debian.org>  Wed, 11 Apr 2012 22:38:32 +0200
+
+libxaw (2:1.0.10-1) unstable; urgency=low
+
+  * New upstream release.
+    - Build fix for -Werror=pointer-to-int-cast (closes: #664934)
+  * Split documentation to a new libxaw-doc package.
+  * Fix up 01_Xaw_StripChart_fix.diff for new version.
+  * Don't require (fake)root for debian/rules clean.
+  * libxaw7-dev is now m-a: same, libxaw-doc m-a: foreign.
+
+ -- Julien Cristau <jcristau@debian.org>  Wed, 11 Apr 2012 21:51:17 +0200
+
+libxaw (2:1.0.9-3) unstable; urgency=low
+
+  * Build for multiarch.
+
+ -- Steve Langasek <vorlon@debian.org>  Fri, 21 Oct 2011 14:12:23 -0700
+
+libxaw (2:1.0.9-2) unstable; urgency=low
+
+  * Bump Standards-Version to 3.9.1.
+  * Drop Pre-Depends on x11-common, only needed for upgrades from sarge.
+  * Drop Conflicts/Replaces on libxaw6-dev, libxaw8-dev, libxaw-headers, last
+    shipped in etch.
+  * Remove David Nusinow and Brice Goglin from Uploaders.  Thanks for your
+    work!
+  * Wrap debian/control Depends fields.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 06 Feb 2011 21:56:43 +0100
+
+libxaw (2:1.0.9-1) experimental; urgency=low
+
+  * New upstream release.
+  * Noticeable change: xaw6.pc now only has xmu in Requires.private, no
+    longer in Requires. Since it might trigger some FTBFS, target
+    experimental. Better be safe than sorry.
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 12 Jan 2011 04:15:35 +0100
+
+libxaw (2:1.0.8-2) unstable; urgency=low
+
+  [ Julien Cristau ]
+  * Revert addition of libXaw.so to libxaw7.install, done by mistake in the
+    previous revision.  That file belongs in the -dev package and is already
+    in libxaw7-dev.links (closes: #602620).  Delete the link in debian/rules
+    install instead, to avoid dh_install complaints.
+
+  [ Cyril Brulebois ]
+  * Lose the git push race, thank Alex Goebel for the report, and upload.
+
+ -- Cyril Brulebois <kibi@debian.org>  Sat, 06 Nov 2010 17:28:44 +0100
+
+libxaw (2:1.0.8-1) unstable; urgency=low
+
+  [ Julien Cristau ]
+  * Update debian/copyright from upstream COPYING.
+  * Rename the build directory to not include DEB_BUILD_GNU_TYPE for no
+    good reason.  Thanks, Colin Watson!
+  * Remove myself from Uploaders
+
+  [ Cyril Brulebois ]
+  * New upstream release.
+  * Bump the build-dep on xutils-dev for new macros.
+  * Add myself to Uploaders.
+  * Remove --disable-xaw8, removed upstream between 1.0.4 and 1.0.5.
+  * Add xmlto, xorg-sgml-doctools, and w3m build-dep for the specs.
+  * Replace --enable-docs with --with-xmlto and --without-fop (we want
+    html and txt only).
+  * Kill *.xml in the doc directory, no point in shipping them.
+  * Switch from --list-missing to --fail-missing for additional safety.
+  * Add usr/lib/libXaw.so to libxaw7-dev.install, it wouldn't be installed
+    otherwise.
+  * Refresh patch.
+
+ -- Cyril Brulebois <kibi@debian.org>  Sat, 06 Nov 2010 13:01:42 +0100
+
 libxaw (2:1.0.7-1) unstable; urgency=low
 
   [ Julien Cristau ]

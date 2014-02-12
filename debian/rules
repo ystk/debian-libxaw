@@ -23,6 +23,8 @@ endif
 DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
 ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
 	confflags += --build=$(DEB_HOST_GNU_TYPE)
 else
@@ -32,73 +34,88 @@ endif
 configure: $(STAMP_DIR)/patch
 	autoreconf -vfi
 
-obj-$(DEB_BUILD_GNU_TYPE)/config.status: configure
-	mkdir -p obj-$(DEB_BUILD_GNU_TYPE)
-	cd obj-$(DEB_BUILD_GNU_TYPE) && \
+build: build-indep
+build-indep: docflags = --enable-specs
+build-indep: build-stamp
+build-arch: docflags = --disable-specs
+build-arch: build-stamp
+
+build-stamp: configure
+	dh_testdir
+	mkdir -p build
+	cd build && \
 	../configure --prefix=/usr --mandir=\$${prefix}/share/man \
+	             --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
 	             --infodir=\$${prefix}/share/info $(confflags) \
-	             --disable-xaw6 --disable-xaw8 \
-	             --enable-docs \
+		     --docdir=\$${datadir}/doc/libxaw7-dev \
+	             --disable-xaw6 \
+	             --with-xmlto --without-fop \
+		     $(docflags) \
 	             CFLAGS="$(CFLAGS)"
 
-build: build-stamp
-build-stamp: obj-$(DEB_BUILD_GNU_TYPE)/config.status
-	dh_testdir
-
-	cd obj-$(DEB_BUILD_GNU_TYPE) && $(MAKE)
-
-	touch build-stamp
+	cd build && $(MAKE)
+	>$@
 
 clean: xsfclean
 	dh_testdir
-	dh_testroot
 	rm -f build-stamp
-
 	rm -f config.cache config.log config.status
 	rm -f */config.cache */config.log */config.status
 	rm -f conftest* */conftest*
 	rm -rf autom4te.cache */autom4te.cache
-	rm -rf obj-*
-	rm -f $$(find -name Makefile.in)
+	rm -rf build
+	find -name Makefile.in -delete
 	rm -f compile config.guess config.sub configure depcomp install-sh
 	rm -f ltmain.sh missing INSTALL aclocal.m4 mkinstalldirs config.h.in
-
 	dh_clean
 
-install: build
+install: build-stamp
 	dh_testdir
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
 
-	cd obj-$(DEB_BUILD_GNU_TYPE) && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-	# the generated html looks ugly, don't ship it
-	rm -f debian/tmp/usr/share/doc/libXaw/widgets.html
+	cd build && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
+	rm -f debian/tmp/usr/lib/*/libXaw.so
+	ln -s libXaw7.so debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libXaw.so
 
 # Build architecture-dependent files here.
-binary-arch: build install
+binary-arch: build-arch install
 	dh_testdir
 	dh_testroot
-
-	dh_installdocs
-	dh_install --sourcedir=debian/tmp --list-missing --exclude=.la
-	dh_installman
-	dh_installchangelogs ChangeLog
-	dh_link
-	dh_strip -Nlibxaw7
+	dh_installdocs -s
+	dh_install -s --sourcedir=debian/tmp --fail-missing --exclude=.la
+	dh_installman -s
+	dh_installchangelogs -s ChangeLog
+	dh_link -s
+	dh_strip -s -Nlibxaw7
 	dh_strip -plibxaw7 --dbg-package=libxaw7-dbg
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs
-	dh_shlibdeps
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	dh_compress -s
+	dh_fixperms -s
+	dh_makeshlibs -s
+	dh_shlibdeps -s
+	dh_installdeb -s
+	dh_gencontrol -s
+	dh_md5sums -s
+	dh_builddeb -s
 
 # Build architecture-independent files here.
-binary-indep: build install
+binary-indep: build-indep install
+	dh_testdir
+	dh_testroot
+	dh_installdocs -i
+	dh_install -i --sourcedir=debian/tmp --fail-missing --exclude=.la
+	dh_installman -i
+	dh_installchangelogs -i ChangeLog
+	dh_link -i
+	dh_compress -i -X.xml
+	dh_fixperms -i
+	dh_installdeb -i
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
 # Nothing to do
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: build build-indep build-arch
+.PHONY: clean binary-indep binary-arch binary install

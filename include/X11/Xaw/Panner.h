@@ -1,5 +1,4 @@
 /*
- * $Xorg: Panner.h,v 1.5 2001/02/09 02:03:45 xorgcvs Exp $
  *
 Copyright 1989, 1998  The Open Group
 
@@ -25,7 +24,6 @@ in this Software without prior written authorization from The Open Group.
  *
  * Author:  Jim Fulton, MIT X Consortium
  */
-/* $XFree86: xc/lib/Xaw/Panner.h,v 1.5 2001/01/17 19:42:28 dawes Exp $ */
 
 #ifndef _XawPanner_h
 #define _XawPanner_h
@@ -34,16 +32,16 @@ in this Software without prior written authorization from The Open Group.
 #include <X11/Xaw/Reports.h>
 
 /*****************************************************************************
- * 
+ *
  * Panner Widget (subclass of Simple)
- * 
+ *
  * This widget is used to represent navigation in a 2d coordinate system
- * 
+ *
  * Resources:
- * 
+ *
  *  Name		Class		Type		Default
  *  ----		-----		----		-------
- * 
+ *
  *  allowOff		AllowOff	Boolean		FALSE
  *  background		Background	Pixel		XtDefaultBackground
  *  backgroundStipple	BackgroundStipple	String	NULL
@@ -62,7 +60,7 @@ in this Software without prior written authorization from The Open Group.
  *  sliderY		SliderY		Position	0
  *  sliderWidth		SliderWidth	Dimension	0
  *  sliderHeight	SliderHeight	Dimension	0
- * 
+ *
  *****************************************************************************/
 
 #ifndef _XtStringDefs_h_

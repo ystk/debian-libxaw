@@ -10,7 +10,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *  
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
@@ -24,8 +24,6 @@
  * dealings in this Software without prior written authorization from the
  * XFree86 Project.
  */
-
-/* $XFree86: xc/lib/Xaw/Private.h,v 3.9 1999/05/16 10:12:48 dawes Exp $ */
 
 #ifndef _XawPrivate_h
 #define _XawPrivate_h

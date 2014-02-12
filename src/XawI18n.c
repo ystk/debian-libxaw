@@ -1,5 +1,3 @@
-/* $Xorg: XawI18n.c,v 1.4 2001/02/09 02:03:47 xorgcvs Exp $ */
-
 /* Copyright 1991 NCR Corporation - Dayton, Ohio, USA */
 
 /*
@@ -20,7 +18,7 @@
  * OMRON, NTT SOFTWARE, AND NTT, DISCLAIM ALL WARRANTIES WITH REGARD
  * TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
  * AND FITNESS, IN NO EVENT SHALL OMRON, NTT SOFTWARE, OR NTT BE
- * LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES 
+ * LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
@@ -53,7 +51,6 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
 
 */
-/* $XFree86: xc/lib/Xaw/XawI18n.c,v 1.7 2001/01/17 19:42:36 dawes Exp $ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -104,5 +101,5 @@ _Xaw_iswalnum(wchar_t ch)
     wctomb((char*)mb, ch);
 
     return (isalnum(*mb));
-#endif    
+#endif
 }

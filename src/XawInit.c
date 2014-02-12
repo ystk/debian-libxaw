@@ -1,5 +1,4 @@
 /*
- * $Xorg: XawInit.c,v 1.4 2001/02/09 02:03:47 xorgcvs Exp $
  *
 Copyright 1989, 1998  The Open Group
 Copyright 2003-2004 Roland Mainz <roland.mainz@nrubsig.org>
@@ -23,18 +22,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Except as contained in this notice, the name of The Open Group shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from The Open Group.
- * 
- * 
- * 			    XawInitializeWidgetSet
- * 
+ *
+ *
+ *			    XawInitializeWidgetSet
+ *
  * This routine forces a reference to vendor shell so that the one in this
  * widget is installed.  Any other cross-widget set initialization should be
  * done here as well.  All Athena widgets should include "XawInit.h" and
  * call this routine from their ClassInitialize procs (this routine may be
  * used as the class init proc).
  */
-/* $XFree86: xc/lib/Xaw/XawInit.c,v 1.9 2001/01/17 19:42:36 dawes Exp $ */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -79,7 +76,7 @@ Widget XawOpenApplication(XtAppContext *app_context_return,
     *app_context_return = XtCreateApplicationContext();
     if( *app_context_return == NULL )
         return NULL;
-      
+
     XtDisplayInitialize(*app_context_return, dpy,
                         application_name, application_class,
                         NULL, 0,
@@ -89,7 +86,7 @@ Widget XawOpenApplication(XtAppContext *app_context_return,
     if (screen) {
         XtSetArg(args[n], XtNscreen, screen); n++;
     }
-    toplevel = XtAppCreateShell(application_name, 
+    toplevel = XtAppCreateShell(application_name,
                                 application_class,
                                 widget_class,
                                 dpy,
