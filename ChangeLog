@@ -1,3 +1,174 @@
+commit a2d573ad309b4e717c5aef4635daa51e60a46db7
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sat Sep 7 20:57:47 2013 -0700
+
+    libXaw 1.0.12
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit c68047934774bf0a96bc2ee84c36bf59eabf9dfb
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sat Jul 6 00:21:19 2013 -0700
+
+    Replace TXT16 with XChar2b inline
+    
+    No longer need #define to substitute it now that we no longer set
+    it to a different type on CRAY systems.
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit 93c88707e017274eaeb6df6a6b9f3bf2da6af06b
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sat Jul 6 00:20:24 2013 -0700
+
+    Remove CRAY/WORD64 support (unifdef -UCRAY -UWORD64)
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit a30892ed9b6d193f6eb2bab5b37180ac8f63b0b1
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sun Apr 21 15:55:33 2013 -0700
+
+    Fix fd leak when write() fails in WriteToFile()
+    
+    Reported by parfait 1.1 bug checking tool:
+       File Descriptor Leak: Leaked File Descriptor fd
+            at line 1098 of src/MultiSrc.c in function 'WriteToFile'.
+              fd initialized at line 1096 with creat
+              fd leaks when creat(name, 438) != -1 at line 1096.
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit 26fb314644fd01928fc881e72e36b2c6bdda5b3b
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sun Apr 21 15:49:33 2013 -0700
+
+    Fix fd leak when fdopen() fails in InitStringOrFile()
+    
+    Found by parfait 1.1p2 bug checking tool:
+       File Descriptor Leak: Leaked File Descriptor fd
+            at line 1507 of src/AsciiSrc.c in function 'InitStringOrFile'.
+              fd initialized at line 1488 with open
+              fd leaks when open(src->ascii_src.string, open_mode, 438) != -1 at line 1488.
+            at line 1276 of src/MultiSrc.c in function 'InitStringOrFile'.
+              fd initialized at line 1257 with open
+              fd leaks when open(src->multi_src.string, open_mode, 438) != -1 at line 1257.
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit a5630e166921b5b5322b30fb152df01bb6536e42
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Fri Jan 4 19:42:05 2013 -0800
+
+    unifdef -U__UNIXOS2__
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+    Reviewed-by: Peter Hutterer <peter.hutterer@who-t.net>
+
+commit e360c7c86b9229ee9fe24b97aba2bfee5df05748
+Author: Ryan Pavlik <rpavlik@iastate.edu>
+Date:   Mon Jan 2 03:11:59 2012 +0000
+
+    Include winsock header on WIN32 to provide fd_set etc.
+    
+    v2: also link with ws2_32 on MinGW
+    
+    Signed-off-by: Ryan Pavlik <rpavlik@iastate.edu>
+    Reviewed-by: Jon TURNEY <jon.turney@dronecode.org.uk>
+    Reviewed-by: Yaakov Selkowitz <yselkowitz@users.sourceforge.net>
+
+commit ffaad7ee2ef6e06b4585567df04f6b64356fb6fe
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Fri Jun 1 20:31:30 2012 -0700
+
+    libXaw 1.0.11
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+commit 52081b462ff7d1844d014bf9be887197caa88160
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sat May 26 15:07:07 2012 -0700
+
+    Only call XawStackFree if XawStackAlloc was used for allocation
+    
+    In FormParagraph() in TextAction.c, the #if OLDXAW case always uses
+    fixed length buffers, while the !OLDXAW case uses XawStackAlloc &
+    XawStackFree to switch to dynamic allocations when the buffers aren't
+    large enough.
+    
+    A couple instances of XawStackFree slipped into the wrong side of
+    the #if checks though, so move them back where they belong.   Also
+    reset pos afterwards, in the case we continue and may use it again,
+    to avoid the chance of a double free.
+    
+    Found by the Parfait 0.5.0.1 bug checking tool:
+    
+    Error: Free memory not allocated dynamically by alloc (CWE 590)
+       Free() was called on a pointer 'buf' to the auto variable 'buf'. Free() must only be used on dynamically allocated memory
+            at line 3946 of TextAction.c in function 'FormParagraph'.
+              'buf' allocated at line 0 as auto variable.
+            at line 4000 of TextAction.c in function 'FormParagraph'.
+              'buf' allocated at line 0 as auto variable.
+    Error: Use after free (CWE 416)
+       Use after free of pointer '&buf'
+            at line 3995 of TextAction.c in function 'FormParagraph'.
+              Previously freed at line 3946 with XtFree.
+    Error: Use after free
+       Double free (CWE 415): Double free of pointer '&buf' in call to XtFree
+            at line 4000 of TextAction.c in function 'FormParagraph'.
+              Previously freed at line 3946 with XtFree.
+       Double free (CWE 415): Double free of pointer '<unknown>' in call to XtFree
+            at line 4000 of TextAction.c in function 'FormParagraph'.
+              Previously freed at line 3946 with XtFree.
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+    Acked-by: pcpa <paulo.cesar.pereira.de.andrade@gmail.com>
+
+commit ca35cff72a3100c9367b7e7f4811117c8733b8be
+Author: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date:   Sat May 26 14:44:26 2012 -0700
+
+    Correct order of arguments to XawStackFree()
+    
+    XawStackAlloc() & XawStackFree() are macros to automate the process of
+    using a fixed size stack buffer for strings smaller than the buffer size,
+    and allocating/freeing memory for larger strings.
+    
+    XawStackFree is defined in src/Private.h as taking (pointer, stk_buffer)
+    and freeing pointer if it's not pointing to the stack buffer.
+    
+    Most of the calls of this macro get the ordering right, but a couple
+    got it reversed, passing a stack buffer to free() instead of the
+    allocated pointer.
+    
+    Found by the Parfait 0.5.0.1 bug checking tool:
+    
+    Error: Free memory not allocated dynamically by alloc (CWE 590)
+       Free() was called on a pointer 'buf' to the auto variable 'buf'. Free() must only be used on dynamically allocated memory
+            at line 2281 of TextAction.c in function 'DoFormatText'.
+              'buf' allocated at line 0 as auto variable.
+            at line 2296 of TextAction.c in function 'DoFormatText'.
+              'buf' allocated at line 0 as auto variable.
+    
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+    Acked-by: pcpa <paulo.cesar.pereira.de.andrade@gmail.com>
+
+commit 11c3a104141e1a4946ad949dfb5514df0b66a031
+Author: pcpa <paulo.cesar.pereira.de.andrade@gmail.com>
+Date:   Tue May 22 20:42:32 2012 -0300
+
+    Correct undefined behavior access to out of scope pointer contents.
+    
+      This problem is triggered in gcc 4.7 DCE (dead code elimination).
+    In the Xaw code, the local constant "String" is not guaranteed to
+    have global scope.
+      The problem was found when debugging the reason xedit built with
+    gcc 4.7 would be very unstable, and that happens regardless of using
+    a libXaw built with gcc 4.6.
+    
+    Signed-off-by: pcpa <paulo.cesar.pereira.de.andrade@gmail.com>
+    Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
 commit b16cc35e551860a0bff54c47b33317536ddeae52
 Author: Alan Coopersmith <alan.coopersmith@oracle.com>
 Date:   Thu Mar 22 19:51:33 2012 -0700
