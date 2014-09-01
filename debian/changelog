@@ -1,3 +1,32 @@
+libxaw (2:1.0.12-2) unstable; urgency=medium
+
+  * Fix typo in package description (closes: #736829).  Thanks, darkestkhan!
+  * Rewrite debian/rules to use dh.  Bump debhelper compat and build-dep to 9.
+    Use dh-autoreconf.
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 12 Jul 2014 17:15:51 +0200
+
+libxaw (2:1.0.12-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fix build with -Werror=format-security, and enable it.
+  * Remove Drew Parsons and Cyril Brulebois from Uploaders.
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 20 Jan 2014 14:34:00 +0100
+
+libxaw (2:1.0.11-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump debhelper compat level to 7.
+  * Use dpkg-buildflags, disable -Werror=format-security since that causes
+    FTBFS.
+  * Disable silent rules.
+  * Remove ed from Build-Depends, no longer needed.
+  * Get rid of debian/xsfbs, use /usr/share/quilt/quilt.make for patch/unpatch
+    rules.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 16 Jun 2013 20:20:36 +0200
+
 libxaw (2:1.0.10-2) unstable; urgency=low
 
   * *sigh* add missing Replaces/Breaks on libxaw7-dev for the new -doc
